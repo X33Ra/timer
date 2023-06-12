@@ -13,7 +13,7 @@ const args = process.argv.slice(2);
 
 const scheduleAlarm = function(time) {
   if (time <= 0 || isNaN(time)) {
-    console.log('please write a positive number');
+    console.log("We can't schedule anything in the past.");
     return; // Ignore negative numbers and non-numeric inputs
   }
   
