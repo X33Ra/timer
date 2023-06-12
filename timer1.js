@@ -13,12 +13,12 @@ const args = process.argv.slice(2);
 
 const scheduleAlarm = function(time) {
   if (time <= 0) {
-    console.log(`Ignoring negative time: ${time}`);
+    console.log(`We can't schedule anything in the past: ${time}`);
     return; // Ignore negative numbers
   }
   
   if (isNaN(time)) {
-    console.log(`Ignoring non-numeric input: ${time}`);
+    console.log(`An input is not a number: ${time}`);
     return; // Ignore non-numeric inputs
   }
   
