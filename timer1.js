@@ -12,6 +12,11 @@
 const args = process.argv.slice(2);
 
 const scheduleAlarm = function(time) {
+  if (time <= 0 || isNaN(time)) {
+    console.log('please write a positive number');
+    return; // Ignore negative numbers and non-numeric inputs
+  }
+  
   setTimeout(() => {
     console.log('Beep!');
     process.stdout.write('\x07'); // Beep sound
@@ -20,11 +25,12 @@ const scheduleAlarm = function(time) {
 
 for (const arg of args) {
   const time = parseInt(arg, 10);
+  scheduleAlarm(time);
   if (!isNaN(time) && time > 0) {
-    scheduleAlarm(time);
     console.log(`Alarm scheduled in ${time} seconds`);
   }
 }
+
 
 // Confirm that our script can handle some common edge cases.
 // No numbers are provided: Easy. It should just not beep at all and end immediately since no beeps should get scheduled.
